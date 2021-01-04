@@ -1,7 +1,11 @@
 # mc-trident-enchantments
 A data pack to work around the fact that Riptide is mutually exclusive with Channeling and Loyalty.
 ## About ##
+Upset that Riptide prevents you from throwing a trident when you're not in the rain? Try this data pack out, and a Riptide trident will become a normal trident when you're not in the rain.
 
+This also means that Chanelling and Loyalty will be applied when you're out if the rain, if they are present.
+
+I've also added an override feature. In the event that you want to disable Riptide in the rain, use the override feature!
 ## Compatibility ##
 - Only for Minecraft: Java Edition
 - Works on versions 1.14+
