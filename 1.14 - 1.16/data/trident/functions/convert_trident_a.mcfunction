@@ -1,9 +1,9 @@
 data modify block 0 0 0 Items[0] merge from entity @s SelectedItem
 data modify block 0 0 0 Items[0].tag.RiptideLvl set from entity @s SelectedItem.tag.Enchantments[{id:"minecraft:riptide"}].lvl
 data remove block 0 0 0 Items[0].tag.Enchantments[{id:"minecraft:riptide"}]
-execute if data block 0 0 0 {Items:[{tag:{RiptideLvl:1}}]} run data modify block 0 0 0 Items[0].tag.display.Lore set value ['{"text":"Riptide I","color":"gray","italic":false}']
-execute if data block 0 0 0 {Items:[{tag:{RiptideLvl:2}}]} run data modify block 0 0 0 Items[0].tag.display.Lore set value ['{"text":"Riptide II","color":"gray","italic":false}']
-execute if data block 0 0 0 {Items:[{tag:{RiptideLvl:3}}]} run data modify block 0 0 0 Items[0].tag.display.Lore set value ['{"text":"Riptide III","color":"gray","italic":false}']
+execute if data block 0 0 0 {Items:[{tag:{RiptideLvl:1}}]} run data modify block 0 0 0 Items[0].tag.display.Lore set value ['{"text":"Riptide I","color":"gray"}']
+execute if data block 0 0 0 {Items:[{tag:{RiptideLvl:2}}]} run data modify block 0 0 0 Items[0].tag.display.Lore set value ['{"text":"Riptide II","color":"gray"}']
+execute if data block 0 0 0 {Items:[{tag:{RiptideLvl:3}}]} run data modify block 0 0 0 Items[0].tag.display.Lore set value ['{"text":"Riptide III","color":"gray"}']
 
 execute unless data block 0 0 0 {Items:[{tag:{RiptideLvl:1}}]} unless data block 0 0 0 {Items:[{tag:{RiptideLvl:2}}]} unless data block 0 0 0 {Items:[{tag:{RiptideLvl:3}}]} run data modify block 0 1 0 Text1 set value '[{"text":"Riptide ","color":"gray","italic":false},{"nbt":"Items[0].tag.RiptideLvl","block":"0 0 0"}]'
 execute unless data block 0 0 0 {Items:[{tag:{RiptideLvl:1}}]} unless data block 0 0 0 {Items:[{tag:{RiptideLvl:2}}]} unless data block 0 0 0 {Items:[{tag:{RiptideLvl:3}}]} unless data block 0 0 0 Items[0].tag.display.Lore run data modify block 0 0 0 Items[0].tag.display.Lore set value [""]
