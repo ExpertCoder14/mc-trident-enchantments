@@ -18,8 +18,8 @@ execute as @a unless score @s trident_override matches 0 if data entity @s {Sele
 execute as @a if score @s trident_override matches 1 if data entity @s SelectedItem{id:"minecraft:trident"}.tag.RiptideOverride run tellraw @s [{"text":"The Riptide Override feature is already active on your selected trident. Did you mean to ","color":"red"},{"text":"deactivate","color":"aqua","underlined":true,"clickEvent":{"action":"suggest_command","value":"/trigger trident_override add -1"}},{"text":" it instead?"}]
 execute as @a if score @s trident_override matches -1 unless data entity @s SelectedItem{id:"minecraft:trident"}.tag.RiptideOverride run tellraw @s [{"text":"The Riptide Override feature is not yet active on your selected trident. Did you mean to ","color":"red"},{"text":"activate","color":"aqua","underlined":true,"clickEvent":{"action":"suggest_command","value":"/trigger trident_override add 1"}},{"text":" it instead?"}]
 
-execute as @a if score @s trident_override matches 1 unless data entity @s SelectedItem{id:"minecraft:trident"}.tag.RiptideOverride run function trident:override_on
-execute as @a if score @s trident_override matches -1 if data entity @s SelectedItem{id:"minecraft:trident"}.tag.RiptideOverride run function trident:override_off
+execute as @a if score @s trident_override matches 1 if data entity @s SelectedItem{id:"minecraft:trident"} unless data entity @s SelectedItem{id:"minecraft:trident"}.tag.RiptideOverride run function trident:override_on
+execute as @a if score @s trident_override matches -1 if data entity @s SelectedItem{id:"minecraft:trident"} if data entity @s SelectedItem{id:"minecraft:trident"}.tag.RiptideOverride run function trident:override_off
 
 scoreboard players set @a trident_override 0
 scoreboard players enable @a trident_override
