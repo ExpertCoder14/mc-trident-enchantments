@@ -1,11 +1,12 @@
 # Rain detector
-execute as @e[limit=1,name=rain,nbt={Fire:0s}] at @s run scoreboard players set $rain trident_inRain 3
-execute as @e[limit=1,name=rain,nbt={Fire:0s}] at @s run data modify entity @s Fire set value 30000
-execute as @e[name=rain] if score $rain trident_inRain matches 1.. run scoreboard players remove $rain trident_inRain 1
+execute as @e[limit=1,tag=rainDetector,nbt={Fire:0s}] at @s run scoreboard players set $rain trident_inRain 3
+execute as @e[limit=1,tag=rainDetector,nbt={Fire:0s}] at @s run data modify entity @s Fire set value 30000
+execute as @e[tag=rainDetector] if score $rain trident_inRain matches 1.. run scoreboard players remove $rain trident_inRain 1
 
-execute as @a at @s if blocks ~ ~1 ~ ~ 255 ~ 0 2 0 all if score $rain trident_inRain matches 1.. run scoreboard players set @s trident_inRain 1
-execute unless score $rain trident_inRain matches 1.. run scoreboard players set @a trident_inRain 0
-execute as @a at @s unless blocks ~ ~1 ~ ~ 255 ~ 0 2 0 all run scoreboard players set @s trident_inRain 0
+execute as @a at @s if blocks ~ ~1 ~ ~ 255 ~ -30000000 0 1604 all if score $rain trident_inRain matches 1.. run scoreboard players set @s trident_inRain 1
+execute as @a at @s if block ~ ~1.62 ~ minecraft:water run scoreboard players set @s trident_inRain 1
+execute unless score $rain trident_inRain matches 1.. as @a at @s unless block ~ ~1 ~ minecraft:water run scoreboard players set @s trident_inRain 0
+execute as @a at @s unless blocks ~ ~1 ~ ~ 255 ~ -30000000 0 1604 all unless block ~ ~1.62 ~ minecraft:water run scoreboard players set @s trident_inRain 0
 
 execute as @a if data entity @s {SelectedItem:{id:"minecraft:trident",tag:{Enchantments:[{id:"minecraft:riptide"}]}}} if score @s trident_inRain matches 0 unless data entity @s SelectedItem.tag.RiptideOverride run function trident:convert_trident_a
 execute as @a if data entity @s {SelectedItem:{id:"minecraft:trident",tag:{Enchantments:[{id:"minecraft:riptide"}]}}} unless score @s trident_inRain matches 0 if data entity @s SelectedItem.tag.RiptideOverride run function trident:convert_trident_a
@@ -23,5 +24,3 @@ execute as @a if score @s trident_override matches -1 if data entity @s Selected
 
 scoreboard players set @a trident_override 0
 scoreboard players enable @a trident_override
-
-execute if score stop trident_main matches 0 run schedule function trident:loop 1
