@@ -10,6 +10,7 @@ I've also added an override feature. In the event that you want to disable Ripti
 - Only for Minecraft: Java Edition
 - Works on versions 1.14+
 - Singleplayer only for now, multiplayer support may be possible but not confirmed yet
+- Overworld only, Nether and End not supported, please disable the data pack before entering! Planned support for other dimensions coming soon.
 ## Installation ##
 1. Clone or download this repository using the green button above by choosing your preferred method.
 2. Select one of the above folders depending on your version.
