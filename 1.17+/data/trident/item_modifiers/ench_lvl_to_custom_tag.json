@@ -1,0 +1,11 @@
+{
+	"function": "minecraft:copy_nbt",
+	"source": "this",
+	"ops": [
+		{
+			"source": "SelectedItem.tag.Enchantments[{id:\"minecraft:riptide\"}].lvl",
+			"target": "RiptideLvl",
+			"op": "replace"
+		}
+	]
+}

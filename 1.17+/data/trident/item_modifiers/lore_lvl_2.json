@@ -1,0 +1,17 @@
+{
+	"function": "minecraft:set_lore",
+	"lore": [
+		{
+			"translate": "enchantment.minecraft.riptide",
+			"color": "gray",
+			"italic": false,
+			"strikethrough": true,
+			"extra": [
+				{"text": " "},
+				{"translate": "enchantment.level.2"}
+			]
+		}
+	],
+	"entity": "this",
+	"replace": true
+}
