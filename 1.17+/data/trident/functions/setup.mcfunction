@@ -9,5 +9,3 @@ fill -30000000 0 1604 -30000000 255 1604 air
 scoreboard objectives add trident_inRain dummy
 scoreboard objectives add trident_override trigger
 scoreboard objectives add trident_main dummy
-kill @e[tag=rainDetector,type=armor_stand]
-execute unless entity @e[tag=rainDetector,type=armor_stand] run summon armor_stand 0 255 0 {NoGravity:1b,Invulnerable:1b,Fire:32766s,Tags:["rainDetector"]}

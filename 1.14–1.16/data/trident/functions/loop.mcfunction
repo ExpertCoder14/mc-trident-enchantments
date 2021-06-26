@@ -1,12 +1,9 @@
 # Rain detector
-execute as @e[limit=1,tag=rainDetector,nbt={Fire:0s}] at @s run scoreboard players set $rain trident_inRain 3
-execute as @e[limit=1,tag=rainDetector,nbt={Fire:0s}] at @s run data modify entity @s Fire set value 30000
-execute as @e[tag=rainDetector] if score $rain trident_inRain matches 1.. run scoreboard players remove $rain trident_inRain 1
-
-execute as @a at @s if blocks ~ ~1 ~ ~ 255 ~ -30000000 0 1604 all if score $rain trident_inRain matches 1.. run scoreboard players set @s trident_inRain 1
+execute as @a at @s if blocks ~ ~1.62 ~ ~ 255 ~ -30000000 0 1604 all if predicate trident:raining run scoreboard players set @s trident_inRain 1
+execute as @a at @s if blocks ~ ~1.62 ~ ~ 255 ~ -30000000 0 1604 all if predicate trident:thundering run scoreboard players set @s trident_inRain 1
 execute as @a at @s if block ~ ~1.62 ~ minecraft:water run scoreboard players set @s trident_inRain 1
-execute unless score $rain trident_inRain matches 1.. as @a at @s unless block ~ ~1 ~ minecraft:water run scoreboard players set @s trident_inRain 0
-execute as @a at @s unless blocks ~ ~1 ~ ~ 255 ~ -30000000 0 1604 all unless block ~ ~1.62 ~ minecraft:water run scoreboard players set @s trident_inRain 0
+execute unless predicate trident:raining unless predicate trident:thundering as @a at @s unless block ~ ~1 ~ minecraft:water run scoreboard players set @s trident_inRain 0
+execute as @a at @s unless blocks ~ ~1.62 ~ ~ 255 ~ -30000000 0 1604 all unless block ~ ~1.62 ~ minecraft:water run scoreboard players set @s trident_inRain 0
 
 execute as @a if data entity @s {SelectedItem:{id:"minecraft:trident",tag:{Enchantments:[{id:"minecraft:riptide"}]}}} if score @s trident_inRain matches 0 unless data entity @s SelectedItem.tag.RiptideOverride run function trident:convert_trident_a
 execute as @a if data entity @s {SelectedItem:{id:"minecraft:trident",tag:{Enchantments:[{id:"minecraft:riptide"}]}}} unless score @s trident_inRain matches 0 if data entity @s SelectedItem.tag.RiptideOverride run function trident:convert_trident_a
